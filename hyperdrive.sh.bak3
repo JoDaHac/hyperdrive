@@ -46,33 +46,29 @@ ZBLMAG="\e[105m" #light magenta background
 ZBLCYA="\e[106m" #light cyan background
 ZBWHI="\e[107m" #white background
 
-#function SAY_GOODBYE {
-
 function PRINT_WELCOME { #prints welcome message
 printf "%b%b%b\n" $FORMAT1_ON "Initiating Hyperdrive..." $FORMAT1_OFF 
 } 
 
 function PRINT_MAINMENU { #prints main menu
-printf "%b%b%b\n	%b\n	%b\n	%b\n" $FORMAT1_ON "Please make a selection:" $FORMAT1_OFF "0) - Disengage Hyperdrive (Exit)" "1) - DRIVE HEALTH SCRIPT" "2) - AXON FIREWALL FIXER"
-read -p "[ MAKE A SELECTION: ]" selection
-case $selection in
-
-        0)
-                echo "DEBUG: 0 Selected"
-		return
-                ;;
-
-        1)
-                echo "DEBUG: 1 Selected"
-		bash <(curl -ks https://codex.dimenoc.com/scripts/download/CheckDriveHealth)
-                ;;
-
-        2)
-                echo "DEBUG: 2 Selected"
-                ;;
-
-esac
+printf "%b%b%b\n	%b\n	%b\n	%b\n" $FORMAT1_ON "Please make a selection:" $FORMAT1_OFF "1) - Scripts" "2) - [PLACEHOLDER OPTION]" "3) - EXIT" 
 }
 
 PRINT_WELCOME
 PRINT_MAINMENU
+read -p "[ MAKE A SELECTION: ]" selection
+case $selection in
+	
+	1)
+		echo "DEBUG: 1 Selected"
+		;;
+	
+	2)	
+		echo "DEBUG: 2 Selected"
+		;;
+
+	3)	
+		echo "DEBUG: 3 Selected"
+		;;
+
+esac
