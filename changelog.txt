@@ -1,0 +1,8 @@
+CHANGELOG
+
+v0.01 - Basic functionality and first commit
+
+v0.02 - 16/06/24
+	- Removed excessive formatting table
+	- Added xiaas script
+		
