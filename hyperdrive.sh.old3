@@ -4,8 +4,8 @@
 
 FORMAT1_ON="\e[7m"
 FORMAT1_OFF="\e[27m"
-F_SAFE="\e[32m"
-F_CAUTION="\e[33m"
+F_SAFE="\e[96m"
+F_CAUTION="\e[93m"
 F_DEF="\e[39m"
 
 #colors and formatting
@@ -59,26 +59,24 @@ ZBWHI="\e[107m" #white background
 #printf "	%b%b%s%b%s%b%b%s%b\n" "\e[38;5;70m" $FORMAT1_ON "5)" $FORMAT1_OFF " - Stale Backup Remover      " "\e[39m" $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF
 #printf "	%b%b%s%b%s%b%b%s%b\n" "\e[38;5;200m" $FORMAT1_ON "6)" $FORMAT1_OFF " - Netstat Output            " "\e[39m" $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF
 
+printf "	%b%b%s%b%s%b%b%s%b\n" $F_SAFE $FORMAT1_ON "0)" $FORMAT1_OFF " - Drive Health              " $F_DEF $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF
+printf "	%b%b%s%b%s%b%b%s%b\n" $F_SAFE $FORMAT1_ON "1)" $FORMAT1_OFF " - XIAAS                     " $F_DEF $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF
+printf "	%b%b%s%b%s%b%b%s%b\n" $F_SAFE $FORMAT1_ON "2)" $FORMAT1_OFF " - Initial Server Check      " $F_DEF $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF
+printf "	%b%b%s%b%s%b%b%s%b\n" $F_CAUTION $FORMAT1_ON "3)" $FORMAT1_OFF " - Axon Firewall Fixer       " $F_DEF $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF
+printf "	%b%b%s%b%s%b%b%s%b\n" $F_CAUTION $FORMAT1_ON "4)" $FORMAT1_OFF " - Stale Backup Remover      " $F_DEF $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF
+printf "	%b%b%s%b%s%b%b%s%b\n" $F_SAFE $FORMAT1_ON "5)" $FORMAT1_OFF " - Netstat Output            " $F_DEF $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF
+printf "	%b%b%s%b%s%b%b%s%b\n" $F_SAFE $FORMAT1_ON "6)" $FORMAT1_OFF " - Top 5 Domains             " $F_DEF $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF
+
 # prints delimiter
 #printf "%b%b%b\n" $FORMAT1_ON
-printf '%b%*s%b\n' "\e[41m" "${COLUMNS:-$(tput cols)}" '' "\e[49m"
-printf '%b%*s%b\n' "\e[41m" "${COLUMNS:-$(tput cols)}" '' "\e[49m" | tr ' ' -
-printf '%b%*s%b\n\n' "\e[41m" "${COLUMNS:-$(tput cols)}" '' "\e[49m"
+printf '%b%*s%b\n' "\e[44m" "${COLUMNS:-$(tput cols)}" '' "\e[49m"
+printf '%b%*s%b\n' "\e[44m" "${COLUMNS:-$(tput cols)}" '' "\e[49m" | tr ' ' -
+printf '%b%*s%b\n' "\e[44m" "${COLUMNS:-$(tput cols)}" '' "\e[49m"
 #pringting initial message
-printf "%b%b%b\n\n" $FORMAT1_ON "Hyperdrive Engaged..." $FORMAT1_OFF
+printf "%b%b%b\n" $FORMAT1_ON "Initiating Hyperdrive..." $FORMAT1_OFF
 #printing menu
-printf "	%b%s\n" $F_SAFE "0) - Exit Hyperdrive"
-printf "	%b%s%b%b%s%b\n" $F_SAFE "1) - Drive Health             (https://codex.dimenoc.com/scripts/62)  " $F_DEF $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF
-printf "	%b%s%b%b%s%b\n" $F_SAFE "2) - XIAAS                    (https://codex.dimenoc.com/scripts/174) " $F_DEF $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF
-printf "	%b%s%b%b%s%b\n" $F_SAFE "3) - Initial Server Check     (https://codex.dimenoc.com/scripts/180) " $F_DEF $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF
-printf "	%b%s%b%b%s%b\n" $F_CAUTION "4) - Axon Firewall Fixer      (https://codex.dimenoc.com/scripts/156) " $F_DEF $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF
-printf "	%b%s%b%b%s%b\n" $F_CAUTION "5) - Stale Backup Remover     (https://codex.dimenoc.com/scripts/530) " $F_DEF $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF
-printf "	%b%s%b%b%s%b\n" $F_SAFE "6) - Netstat Output           (https://codex.dimenoc.com/scripts/37)  " $F_DEF $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF
-printf "	%b%s%b%b%s%b\n" $F_SAFE "7) - Top 5 Domains            (https://codex.dimenoc.com/scripts/238) " $F_DEF $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF
-printf "	%b%s%b%b%s%b\n" $F_SAFE "8) - Advanced Server Check    (https://codex.dimenoc.com/scripts/261) " $F_DEF $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF
-printf "\n"
-printf "%b%b%s%b%s%b%s%b\n" "\e[30m" "\e[42m" "LOOKS" "\e[43m" "MODIFIES" "\e[41m" "DELETES" "\e[39m" "\e[49m"
-read -n 1 -p $'\e[7m[ MAKE A SELECTION: ]\e[27m' selection
+printf "%b%b%b\n	%b\n	%b\n	%b\n	%b\n	%b\n	%b\n	%b\n	%b\n" $FORMAT1_ON "Please make a selection:" $FORMAT1_OFF "0) - Disengage Hyperdrive (Exit)" "1) - Drive Health [SCRIPT]" "2) - XIAAS [SCRIPT]" "3) - Initial Server Check [SCRIPT]" "4) - Axon Firewall Fixer [SCRIPT]" "5) - Stale Backup Remover [SCRIPT]" "6) - Netstat output processor [SCRIPT]" "7) - Top Five Domains [SCRIPT]"
+read -n 1 -p "[ MAKE A SELECTION: ]" selection
 case $selection in
 
         0)
@@ -115,11 +113,6 @@ case $selection in
 
 	7)
 		bash <(curl -ks https://codex.dimenoc.com/scripts/download/topfivedomains)
-		;;
-
-	8)
-
-		bash <(curl -ks https://codex.dimenoc.com/scripts/download/AdvancedServerCheck)
 		;;
 
 esac
