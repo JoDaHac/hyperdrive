@@ -6,7 +6,6 @@ FORMAT1_ON="\e[7m"
 FORMAT1_OFF="\e[27m"
 F_SAFE="\e[32m"
 F_CAUTION="\e[33m"
-F_DANGER="\e[31m"
 F_DEF="\e[39m"
 
 #colors and formatting
@@ -71,60 +70,63 @@ printf '%b%*s%b\n\n' "\e[41m" "${COLUMNS:-$(tput cols)}" '' "\e[49m"
 #pringting initial message
 printf "%b%b%b\n\n" $FORMAT1_ON "Hyperdrive Engaged..." $FORMAT1_OFF
 #printing menu
-printf "%s%s%s%s\n" "                                                                                             " "D"
-printf "%s%s%s%s\n" "                                                                                       " "   " "W  " "E"
-printf "%s%s%s%s\n" "                                                                                       " "R  " "R  " "L"
-printf "%s%s%s%s\n" "                                                                                       " "E  " "I  " "E"
-printf "%s%s%s%s\n" "                                                                                       " "A  " "T  " "T"
-printf "	%b%s%b%s%s%s\n" $F_SAFE "0) - Exit Hyperdrive                                                           " $F_DEF "D  " "E  " "E"
-printf "	%b%s%b%b%s%b%s%s%s\n" $F_SAFE "1) - Drive Health             (https://codex.dimenoc.com/scripts/62)  " $F_DEF $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF "$CHECKED" "$NOCHECK" "$NOCHECK"
-printf "	%b%s%b%b%s%b%s%s%s\n" $F_SAFE "2) - XIAAS                    (https://codex.dimenoc.com/scripts/174) " $F_DEF $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF "$CHECKED" "$NOCHECK" "$NOCHECK"
-printf "	%b%s%b%b%s%b%s%s%s\n" $F_SAFE "3) - Initial Server Check     (https://codex.dimenoc.com/scripts/180) " $F_DEF $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF "$CHECKED" "$NOCHECK" "$NOCHECK"
-printf "	%b%s%b%b%s%b%s%s%s\n" $F_CAUTION "4) - Axon Firewall Fixer      (https://codex.dimenoc.com/scripts/156) " $F_DEF $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF "$CHECKED" "$CHECKED" "$NOCHECK"
-printf "	%b%s%b%b%s%b%s%s%s\n" $F_DANGER "5) - Stale Backup Remover     (https://codex.dimenoc.com/scripts/530) " $F_DEF $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF "$CHECKED" "$CHECKED" "$CHECKED"
-printf "	%b%s%b%b%s%b%s%s%s\n" $F_SAFE "6) - Netstat Output           (https://codex.dimenoc.com/scripts/37)  " $F_DEF $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF "$CHECKED" "$NOCHECK" "$NOCHECK"
-printf "	%b%s%b%b%s%b%s%s%s\n" $F_SAFE "7) - Top 5 Domains            (https://codex.dimenoc.com/scripts/238) " $F_DEF $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF "$CHECKED" "$NOCHECK" "$NOCHECK"
-printf "	%b%s%b%b%s%b%s%s%s\n" $F_SAFE "8) - Advanced Server Check    (https://codex.dimenoc.com/scripts/261) " $F_DEF $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF "$CHECKED" "$NOCHECK" "$NOCHECK"
+printf "%s%s%s\n" "                                                                                       " "   " "W"
+printf "%s%s%s\n" "                                                                                       " "R  " "R"
+printf "%s%s%s\n" "                                                                                       " "E  " "I"
+printf "%s%s%s\n" "                                                                                       " "A  " "T"
+printf "	%b%s%b%s%s" $F_SAFE "0) - Exit Hyperdrive                                                           " $F_DEF "D  " "E"
+printf "	%b%s%b%b%s%b%s%s\n" $F_SAFE "1) - Drive Health             (https://codex.dimenoc.com/scripts/62)  " $F_DEF $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF "$CHECKED" "$NOCHECK"
+printf "	%b%s%b%b%s%b\n" $F_SAFE "2) - XIAAS                    (https://codex.dimenoc.com/scripts/174) " $F_DEF $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF
+printf "	%b%s%b%b%s%b\n" $F_SAFE "3) - Initial Server Check     (https://codex.dimenoc.com/scripts/180) " $F_DEF $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF
+printf "	%b%s%b%b%s%b\n" $F_CAUTION "4) - Axon Firewall Fixer      (https://codex.dimenoc.com/scripts/156) " $F_DEF $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF
+printf "	%b%s%b%b%s%b\n" $F_CAUTION "5) - Stale Backup Remover     (https://codex.dimenoc.com/scripts/530) " $F_DEF $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF
+printf "	%b%s%b%b%s%b\n" $F_SAFE "6) - Netstat Output           (https://codex.dimenoc.com/scripts/37)  " $F_DEF $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF
+printf "	%b%s%b%b%s%b\n" $F_SAFE "7) - Top 5 Domains            (https://codex.dimenoc.com/scripts/238) " $F_DEF $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF
+printf "	%b%s%b%b%s%b\n" $F_SAFE "8) - Advanced Server Check    (https://codex.dimenoc.com/scripts/261) " $F_DEF $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF
 printf "\n"
 printf "%b%b%s%b%s%b%s%b%b\n" "\e[30m" "\e[42m" "LOOKS" "\e[43m" "MODIFIES" "\e[41m" "DELETES" "\e[39m" "\e[49m"
 read -n 1 -p $'\e[7m[ MAKE A SELECTION: ]\e[27m' selection
 case $selection in
 
-        0 | *)
+        0)
                 #echo "DEBUG: 0 Selected"
 		printf "\n%b\n" "Exiting Hyperdrive..."
 		exit 0	
                 ;;
+
         1)
                 #echo "DEBUG: 1 Selected"
 		bash <(curl -ks https://codex.dimenoc.com/scripts/download/CheckDriveHealth)
                 ;;
+
         2)
 		python <(curl -ks https://codex.dimenoc.com/scripts/download/xiaas)
 		;;
+
 	3)
 		bash <(curl -ks https://codex.dimenoc.com/scripts/download/initialservercheck)
 		;;
+
 	4)
                 #echo "DEBUG: 2 Selected"
 		bash <(curl -ks https://codex.dimenoc.com/scripts/download/AxonCheck)
                 ;;
+
 	5)	
 		bash <(curl -ks https://codex.dimenoc.com/scripts/download/stalebackupremover)
 		;;
+
 	6)
 		bash <(curl -ks https://codex.dimenoc.com/scripts/download/connections)
 		;;
+
 	7)
 		bash <(curl -ks https://codex.dimenoc.com/scripts/download/topfivedomains)
 		;;
+
 	8)
+
 		bash <(curl -ks https://codex.dimenoc.com/scripts/download/AdvancedServerCheck)
 		;;
-	0 | *)
-		#echo "DEBUG: 0 Selected"
-                printf "\n%b\n" "Exiting Hyperdrive..."
-                exit 0
-                ;;
 
 esac
