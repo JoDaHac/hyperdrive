@@ -90,7 +90,7 @@ printf "%b%b%s%b%s%b%s%b%b\n" "\e[30m" "\e[42m" "LOOKS" "\e[43m" "MODIFIES" "\e[
 read -n 1 -p $'\e[7m[ MAKE A SELECTION: ]\e[27m' selection
 case $selection in
 
-        0 | *)
+        0)
                 #echo "DEBUG: 0 Selected"
 		printf "\n%b\n" "Exiting Hyperdrive..."
 		exit 0	
@@ -121,7 +121,7 @@ case $selection in
 	8)
 		bash <(curl -ks https://codex.dimenoc.com/scripts/download/AdvancedServerCheck)
 		;;
-	0 | *)
+	*)
 		#echo "DEBUG: 0 Selected"
                 printf "\n%b\n" "Exiting Hyperdrive..."
                 exit 0
