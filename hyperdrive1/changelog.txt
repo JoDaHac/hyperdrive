@@ -1,0 +1,15 @@
+CHANGELOG
+
+v0.01 - Basic functionality and first commit
+
+v0.02 - 16/06/24
+	- Removed excessive formatting table
+	- Added xiaas script
+
+v0.03 - 16/06/24
+	- Added Initial Server Check script
+
+v0.03.01 - 16/06/24
+	- Added stale backup remover script
+	- Added netstat output script
+	- Added top five domains script

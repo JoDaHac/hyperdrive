@@ -1,0 +1,192 @@
+#! /usr/bin/env bash
+
+#################################################################
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+#################################################################
+#		  ___   _  _   ___    ___  			#
+#		 |_ _| | \| | | __|  / _ \ 			#
+#		  | |  | .` | | _|  | (_) |			#
+#		 |___| |_|\_| |_|    \___/ 			#
+#								#
+#################################################################
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+#################################################################
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+#################################################################
+#								#
+# PURPOSE:							#
+# 	This script is designed to assist and expedite		#
+#	troubleshooting, appraisal, repair and optimization	#
+#	of Linux servers					#
+#								#
+#################################################################
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+#################################################################
+#								#
+# REQUIREMENTS:							#
+#								#
+#	* BASH							#
+#								#
+#################################################################			
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+#################################################################
+#								#
+# ATTRIBUTIONS:							#
+#								#
+#	- This script is written by Zolvaring			#
+#	- Please direct all feedback and bug reports to		#
+#	  zolvaring@gmail.com					#
+#								#
+#################################################################
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+#################################################################
+#								#
+# LEGAL:							#
+#								#
+#	- This script is written for personal use ONLY		#
+#	- All rights are reserverd				#
+#	- This script may not be distributed for any reason	#
+#								#
+#################################################################
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+#################################################################
+#		    __  ___   _  _   ___    ___  		#
+# 		   / / |_ _| | \| | | __|  / _ \ 		#
+#		  / /   | |  | .` | | _|  | (_) |		#
+#		 /_/   |___| |_|\_| |_|    \___/ 		#
+#								#
+#################################################################
+
+
+
+FORMAT1_ON="\e[7m"	# Default format
+FORMAT1_OFF="\e[27m"	# Clears default format
+F_SAFE="\e[32m"		# Marks a safe option or entry, shows good status
+F_CAUTION="\e[33m"	# Marks a caution option or entry, shows poor status
+F_DANGER="\e[31m"	# Marks a dangerous option or entry, shows error status
+F_DEF="\e[39m"		# Sets all formatting back to default
+
+CHECKED="[X]"
+NOCHECK="[ ]"
+
+
+function z_disengage {
+	printf "\n%s\n" "Hyperdrive disengaged"
+      	exit 0
+}
+
+function z_printDelimit {
+
+# prints delimiter
+printf '%b%*s%b\n' "\e[107m" "${COLUMNS:-$(tput cols)}" '' "\e[49m"
+printf '%b%*s%b\n' "\e[107m" "${COLUMNS:-$(tput cols)}" '' "\e[49m" | tr ' ' -
+printf '%b%*s%b\n\n' "\e[107m" "${COLUMNS:-$(tput cols)}" '' "\e[49m"
+
+}
+
+
+# prints a simple message
+# designed to greet the user
+# & confirm what is about to run
+function z_printGreeting {
+
+printf "%b%b%b\n\n" $FORMAT1_ON "Hyperdrive Engaged..." $FORMAT1_OFF
+
+}
+
+# prints the main menu from which all other options are accessed
+# first shows available options
+# second lets user make choice
+# third processes user choice  
+function z_mainMenu {
+
+        # printing options
+        printf "%s\n" "What would you like to do?"
+        printf "%s\n" "0) - Exit Hyperdrive"
+        printf "%s\n" "1) - Scripts"
+
+        # prompting for input
+        read -n 1 -p $'\e[7m[ MAKE A SELECTION: ]\e[27m' selection
+        case $selection in
+
+                0)
+                        z_disengage
+                        ;;
+                1)
+                        z_showScripts
+                        ;;
+                *)
+                        z_disengage
+                        ;;
+
+        esac
+
+}
+
+function z_showScripts {
+
+        # printing menu
+        printf "%s%s%s%s\n" "                                                                                             " "D"
+        printf "%s%s%s%s\n" "                                                                                       " "   " "W  " "E"
+        printf "%s%s%s%s\n" "                                                                                       " "R  " "R  " "L"
+        printf "%s%s%s%s\n" "                                                                                       " "E  " "I  " "E"
+        printf "%s%s%s%s\n" "                                                                                       " "A  " "T  " "T"
+        printf "        %b%s%b%s%s%s\n" $F_SAFE "0) - Exit Hyperdrive                                                           " $F_DEF "D  " "E  " "E"
+        printf "        %b%s%b%b%s%b%s%s%s\n" $F_SAFE "1) - Drive Health             (https://codex.dimenoc.com/scripts/62)  " $F_DEF $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF "$CHECKED" "$NOCHECK" "$NOCHECK"
+        printf "        %b%s%b%b%s%b%s%s%s\n" $F_SAFE "2) - XIAAS                    (https://codex.dimenoc.com/scripts/174) " $F_DEF $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF "$CHECKED" "$NOCHECK" "$NOCHECK"
+        printf "        %b%s%b%b%s%b%s%s%s\n" $F_SAFE "3) - Initial Server Check     (https://codex.dimenoc.com/scripts/180) " $F_DEF $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF "$CHECKED" "$NOCHECK" "$NOCHECK"
+        printf "        %b%s%b%b%s%b%s%s%s\n" $F_CAUTION "4) - Axon Firewall Fixer      (https://codex.dimenoc.com/scripts/156) " $F_DEF $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF "$CHECKED" "$CHECKED" "$NOCHECK"
+        printf "        %b%s%b%b%s%b%s%s%s\n" $F_DANGER "5) - Stale Backup Remover     (https://codex.dimenoc.com/scripts/530) " $F_DEF $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF "$CHECKED" "$CHECKED" "$CHECKED"
+        printf "        %b%s%b%b%s%b%s%s%s\n" $F_SAFE "6) - Netstat Output           (https://codex.dimenoc.com/scripts/37)  " $F_DEF $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF "$CHECKED" "$NOCHECK" "$NOCHECK"
+        printf "        %b%s%b%b%s%b%s%s%s\n" $F_SAFE "7) - Top 5 Domains            (https://codex.dimenoc.com/scripts/238) " $F_DEF $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF "$CHECKED" "$NOCHECK" "$NOCHECK"
+        printf "        %b%s%b%b%s%b%s%s%s\n" $F_SAFE "8) - Advanced Server Check    (https://codex.dimenoc.com/scripts/261) " $F_DEF $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF "$CHECKED" "$NOCHECK" "$NOCHECK"
+        printf "\n"
+        printf "%b%b%s%b%s%b%s%b%b\n" "\e[30m" "\e[42m" "LOOKS" "\e[43m" "MODIFIES" "\e[41m" "DELETES" "\e[39m" "\e[49m"
+        read -n 1 -p $'\e[7m[ MAKE A SELECTION: ]\e[27m' selection
+        case $selection in
+
+                0)
+                        #echo "DEBUG: 0 Selected"
+                        printf "\n%b\n" "Exiting Hyperdrive..."
+                        exit 0
+                        ;;
+                1)
+                        #echo "DEBUG: 1 Selected"
+                        bash <(curl -ks https://codex.dimenoc.com/scripts/download/CheckDriveHealth)
+                      ;;
+                2)
+                        python <(curl -ks https://codex.dimenoc.com/scripts/download/xiaas)
+                        ;;
+                3)
+                        bash <(curl -ks https://codex.dimenoc.com/scripts/download/initialservercheck)
+                        ;;
+                4)
+                        #echo "DEBUG: 2 Selected"
+                        bash <(curl -ks https://codex.dimenoc.com/scripts/download/AxonCheck)
+                        ;;
+                5)
+                        bash <(curl -ks https://codex.dimenoc.com/scripts/download/stalebackupremover)
+                        ;;
+                6)
+                        bash <(curl -ks https://codex.dimenoc.com/scripts/download/connections)
+                        ;;
+                7)
+                        bash <(curl -ks https://codex.dimenoc.com/scripts/download/topfivedomains)
+                        ;;
+                8)
+                        bash <(curl -ks https://codex.dimenoc.com/scripts/download/AdvancedServerCheck)
+                        ;;
+                *)
+                        #echo "DEBUG: 0 Selected"
+                        printf "\n%b\n" "Exiting Hyperdrive..."
+                        exit 0
+                        ;;
+
+        esac
+}
+
+z_printDelimit
+
+z_printGreeting
+
+z_mainMenu
