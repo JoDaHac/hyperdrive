@@ -1,5 +1,9 @@
 #! /usr/bin/env bash
 
+function z_print_info {
+
+	cat <<'EOS'
+ 
 #################################################################
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
 #################################################################
@@ -57,7 +61,9 @@
 #								#
 #################################################################
 
+EOS
 
+}
 
 FORMAT1_ON="\e[107m\e[30m"	# Default format
 FORMAT1_OFF="\e[0m\e[97m"	# Clears default format
@@ -105,10 +111,12 @@ function z_mainMenu {
         printf "%s\n" "What would you like to do?"
         printf "%s\n" "0) - Exit Hyperdrive"
         printf "%s\n" "1) - Scripts"
+	printf "%s\n" "2) - One-Liners"
+	printf "%s\n" "3) - About"
 	printf "\n"	# prints a delimiting line
 
         # prompting for input
-        read -n 1 -p $'\e[7m[ MAKE A SELECTION: ]\e[27m' selection
+        read -p $'\e[7m[ MAKE A SELECTION ]:\e[27m ' selection
         case $selection in
 
                 0)
@@ -117,6 +125,12 @@ function z_mainMenu {
                 1)
                         z_showScripts
                         ;;
+		2)
+			z_show_oneliners
+			;;
+		3)
+			z_print_info
+			;;
                 *)
                         z_disengage
                         ;;
@@ -128,7 +142,7 @@ function z_mainMenu {
 function z_showScripts {
 
         # printing menu
-        printf "%s%s%s%s\n" "                                                                       " "D"
+        printf "%s%s%s%s\n" "                                                                                             " "D"
         printf "%s%s%s%s\n" "                                                                                       " "   " "W  " "E"
         printf "%s%s%s%s\n" "                                                                                       " "R  " "R  " "L"
         printf "%s%s%s%s\n" "                                                                                       " "E  " "I  " "E"
@@ -144,7 +158,7 @@ function z_showScripts {
         printf "        %s%b%s%b%s\n" "8) - Advanced Server Check    (https://codex.dimenoc.com/scripts/261) " $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF "[X][ ][ ]"
         printf "\n"
         #printf "%b%b%s%b%s%b%s%b%b\n" "\e[30m" "\e[42m" "LOOKS" "\e[43m" "MODIFIES" "\e[41m" "DELETES" "\e[39m" "\e[49m"
-        read -n 1 -p $'\e[7m[ MAKE A SELECTION: ]\e[27m' selection
+        read -p $'\e[7m[ MAKE A SELECTION ]:\e[27m ' selection
 	printf "%b\n" '\e[0m'
         case $selection in
 
@@ -187,6 +201,40 @@ function z_showScripts {
 
         esac
 }
+
+function z_show_oneliners {
+
+	# printing menu
+        printf "%s%s%s%s\n" "                                                                                             " "D"
+        printf "%s%s%s%s\n" "                                                                                       " "   " "W  " "E"
+        printf "%s%s%s%s\n" "                                                                                       " "R  " "R  " "L"
+        printf "%s%s%s%s\n" "                                                                                       " "E  " "I  " "E"
+        printf "%s%s%s%s\n" "                                                                                       " "A  " "T  " "T"
+        printf "        %s%b%s%s%s\n" "0) - Exit Hyperdrive                                                           " $F_DEF "D  " "E  " "E"
+	printf "\n"
+	printf "        %s%b%s%b%s\n" "1) - Filtered Recent /var/log/messages                             " $FORMAT1_ON "[ONE-LINER]" $FORMAT1_OFF "[X][ ][ ]"
+	printf "                %b%s%b" '\e[95m' "(  tail -n 100 /var/log/messages | egrep -vi 'firewall|named|ftd'  )" $F_DEF
+	printf "\n"
+	printf "\n"
+	read -p $'\e[7m[ MAKE A SELECTION ]:\e[27m ' _selection
+        printf "%b\n" '\e[0m'
+        case $_selection in
+
+		0)
+			printf "\n%b\n" "Exiting Hyperdrive..."
+			exit 0
+			;;
+		1)
+			tail -n 100 /var/log/messages | egrep -vi 'firewall|named|ftd'
+			;;
+		*)
+			exit 0
+	
+	esac
+
+}	
+
+
 
 z_printDelimit
 
