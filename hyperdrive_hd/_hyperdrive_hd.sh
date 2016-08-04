@@ -7,62 +7,62 @@ function z_print_info {
 #################################################################
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
 #################################################################
-#		  ___   _  _   ___    ___  			#
-#		 |_ _| | \| | | __|  / _ \ 			#
-#		  | |  | .` | | _|  | (_) |			#
-#		 |___| |_|\_| |_|    \___/ 			#
-#								#
+#		  ___   _  _   ___    ___  								#
+#		 |_ _| | \| | | __|  / _ \ 								#
+#		  | |  | .` | | _|  | (_) |								#
+#		 |___| |_|\_| |_|    \___/ 								#
+#																#
 #################################################################
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
 #################################################################
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
 #################################################################
-#								#
-# PURPOSE:							#
-# 	This script is designed to assist and expedite		#
-#	troubleshooting, appraisal, repair and optimization	#
-#	of Linux servers					#
-#								#
-#	This script was written with for compatibility with	#
-#	CentOS systems and may not function as expected		#
-#	on all distributions					#
+#																#
+# PURPOSE:														#
+# 	This script is designed to assist and expedite				#
+#	troubleshooting, appraisal, repair and optimization			#
+#	of Linux servers											#
+#																#
+#	This script was written with for compatibility with			#
+#	CentOS systems and may not function as expected				#
+#	on all distributions										#
 #################################################################
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
 #################################################################
-#								#
-# REQUIREMENTS:							#
-#								#
-#	* BASH							#
-#								#
+#																#
+# REQUIREMENTS:													#
+#																#
+#	* BASH														#
+#																#
 #################################################################			
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
 #################################################################
-#								#
-# ATTRIBUTIONS:							#
-#								#
-#	- This script is written by Justin Heil			#
-#	- Please direct all feedback and bug reports to		#
-#	  justin.h@hostdime.com					#
-#								#
+#																#
+# ATTRIBUTIONS:													#
+#																#
+#	- This script is written by Justin Heil						#
+#	- Please direct all feedback and bug reports to				#
+#	  justin.h@hostdime.com										#
+#																#
 #################################################################
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
 #################################################################
-#								#
-# LEGAL:							#
-#								#
-#	- This script is for HOSTDIME internal use ONLY		#
-	  all other use is unauthorized				#
-#	- All rights are reserverd				#
-#	- This script may not be distributed for any reason	#
-#								#
+#																#
+# LEGAL:														#
+#																#
+#	- This script is for HOSTDIME internal use ONLY				#
+	  all other use is unauthorized								#
+#	- All rights are reserverd									#
+#	- This script may not be distributed for any reason			#
+#																#
 #################################################################
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
 #################################################################
-#		    __  ___   _  _   ___    ___  		#
-# 		   / / |_ _| | \| | | __|  / _ \ 		#
-#		  / /   | |  | .` | | _|  | (_) |		#
-#		 /_/   |___| |_|\_| |_|    \___/ 		#
-#								#
+#		    __  ___   _  _   ___    ___  						#
+# 		   / / |_ _| | \| | | __|  / _ \ 						#
+#		  / /   | |  | .` | | _|  | (_) |						#
+#		 /_/   |___| |_|\_| |_|    \___/ 						#
+#																#
 #################################################################
 
 EOS
@@ -154,12 +154,13 @@ function z_showScripts {
         printf "        %s%b%s%s%s\n" "0) - Exit Hyperdrive                                                           " $F_DEF "D  " "E  " "E"
         printf "        %s%b%s%b%s\n" "1) - Drive Health             (https://codex.dimenoc.com/scripts/62)  " $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF "[X][ ][ ]"
         printf "        %s%b%s%b%s\n" "2) - XIAAS                    (https://codex.dimenoc.com/scripts/174) " $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF "[X][ ][ ]"
-        printf "        %s%b%s%b%s\n" "3) - Initial Server Check     (https://codex.dimenoc.com/scripts/180) " $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF "[X][ ][ ]"
-        printf "        %s%b%s%b%s\n" "4) - Axon Firewall Fixer      (https://codex.dimenoc.com/scripts/156) " $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF "[X][X][ ]"
-        printf "        %s%b%s%b%s\n" "5) - Stale Backup Remover     (https://codex.dimenoc.com/scripts/530) " $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF "[X][ ][X]"
-        printf "        %s%b%s%b%s\n" "6) - Netstat Output           (https://codex.dimenoc.com/scripts/37)  " $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF "[X][ ][ ]"
-        printf "        %s%b%s%b%s\n" "7) - Top 5 Domains            (https://codex.dimenoc.com/scripts/238) " $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF "[X][ ][ ]"
-        printf "        %s%b%s%b%s\n" "8) - Advanced Server Check    (https://codex.dimenoc.com/scripts/261) " $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF "[X][ ][ ]"
+        printf "        %s%b%s%b%s\n" "3) - Reboot Follow-Up         (https://codex.dimenoc.com/scripts/654) " $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF "[X][-][ ]"
+        printf "        %s%b%s%b%s\n" "4) - Initial Server Check     (https://codex.dimenoc.com/scripts/180) " $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF "[X][ ][ ]"
+        printf "        %s%b%s%b%s\n" "5) - Axon Firewall Fixer      (https://codex.dimenoc.com/scripts/156) " $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF "[X][X][ ]"
+        printf "        %s%b%s%b%s\n" "6) - Stale Backup Remover     (https://codex.dimenoc.com/scripts/530) " $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF "[X][ ][X]"
+        printf "        %s%b%s%b%s\n" "7) - Netstat Output           (https://codex.dimenoc.com/scripts/37)  " $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF "[X][ ][ ]"
+        printf "        %s%b%s%b%s\n" "8) - Top 5 Domains            (https://codex.dimenoc.com/scripts/238) " $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF "[X][ ][ ]"
+        printf "        %s%b%s%b%s\n" "9) - Advanced Server Check    (https://codex.dimenoc.com/scripts/261) " $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF "[X][ ][ ]"
         printf "\n"
         #printf "%b%b%s%b%s%b%s%b%b\n" "\e[30m" "\e[42m" "LOOKS" "\e[43m" "MODIFIES" "\e[41m" "DELETES" "\e[39m" "\e[49m"
         read -p $'\e[7m[ MAKE A SELECTION ]:\e[27m ' selection
@@ -179,22 +180,25 @@ function z_showScripts {
                         python <(curl -ks https://codex.dimenoc.com/scripts/download/xiaas)
                         ;;
                 3)
+                        bash <(curl -ks https://codex.dimenoc.com/scripts/download/rbtfollowup)
+                        ;;
+				4)
                         bash <(curl -ks https://codex.dimenoc.com/scripts/download/initialservercheck)
                         ;;
-                4)
+                5)
                         #echo "DEBUG: 2 Selected"
                         bash <(curl -ks https://codex.dimenoc.com/scripts/download/AxonCheck)
                         ;;
-                5)
+                6)
                         bash <(curl -ks https://codex.dimenoc.com/scripts/download/stalebackupremover)
                         ;;
-                6)
+                7)
                         bash <(curl -ks https://codex.dimenoc.com/scripts/download/connections)
                         ;;
-                7)
+                8)
                         bash <(curl -ks https://codex.dimenoc.com/scripts/download/topfivedomains)
                         ;;
-                8)
+                9)
                         bash <(curl -ks https://codex.dimenoc.com/scripts/download/AdvancedServerCheck)
                         ;;
                 *)
