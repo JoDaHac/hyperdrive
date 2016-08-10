@@ -161,6 +161,7 @@ function z_showScripts {
         printf "        %s%b%s%b%s\n" "7) - Netstat Output           (https://codex.dimenoc.com/scripts/37)  " $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF "[X][ ][ ]"
         printf "        %s%b%s%b%s\n" "8) - Top 5 Domains            (https://codex.dimenoc.com/scripts/238) " $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF "[X][ ][ ]"
         printf "        %s%b%s%b%s\n" "9) - Advanced Server Check    (https://codex.dimenoc.com/scripts/261) " $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF "[X][ ][ ]"
+        printf "        %s%b%s%b%s\n" "10) - Mandarax			     (http://hexbeam.org/mandarax.sh) 		 " $FORMAT1_ON "[SCRIPT]" $FORMAT1_OFF "[ BETA! ]"
         printf "\n"
         #printf "%b%b%s%b%s%b%s%b%b\n" "\e[30m" "\e[42m" "LOOKS" "\e[43m" "MODIFIES" "\e[41m" "DELETES" "\e[39m" "\e[49m"
         read -p $'\e[7m[ MAKE A SELECTION ]:\e[27m ' selection
@@ -201,6 +202,9 @@ function z_showScripts {
                 9)
                         bash <(curl -ks https://codex.dimenoc.com/scripts/download/AdvancedServerCheck)
                         ;;
+				10)
+						bash <(curl -ks http://hexbeam.org/mandarax.sh)
+						;;
                 *)
                         #echo "DEBUG: 0 Selected"
                         printf "\n%b\n" "Exiting Hyperdrive..."
